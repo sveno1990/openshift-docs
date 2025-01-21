@@ -113,6 +113,8 @@ Topics:
   File: microshift-using-config-yaml
 - Name: Configuring IPv6 networking
   File: microshift-nw-ipv6-config
+- Name: Using ingress control for a MicroShift cluster
+  File: microshift-ingress-controller
 - Name: Cluster access with kubeconfig
   File: microshift-cluster-access-kubeconfig
 - Name: Using custom certificate authorities
@@ -195,6 +197,8 @@ Distros: microshift
 Topics:
 - Name: Using Kustomize to deploy applications
   File: microshift-applications
+- Name: Deleting or updating Kustomize manifest resources
+  File: microshift-deleting-resource-manifests
 - Name: Embedding applications on RHEL for Edge
   File: microshift-embedded-apps-on-rhel-edge
 - Name: Embedding applications for offline use
@@ -225,6 +229,8 @@ Distros: microshift
 Topics:
 - Name: Backing up and restoring data
   File: microshift-backup-and-restore
+- Name: Automated recovery from manual backups
+  File: microshift-auto-recover-manual-backup
 ---
 Name: Troubleshooting
 Dir: microshift_troubleshooting

@@ -10,12 +10,12 @@ You can embed your {sno} seed image URL, and other installation artifacts, in a 
 
 [NOTE]
 ====
-For more information about the specification for the `image-based-installation-config.yaml` manifest, see the section _Reference specifications for the `image-based-installation-config.yaml` manifest_.
+For more information about the specification for the `image-based-installation-config.yaml` manifest, see the section "Reference specifications for the `image-based-installation-config.yaml` manifest".
 ====
 
 .Prerequisites
 * You generated a seed image from a {sno} seed cluster.
-* You downloaded the latest version of the `openshift-install` program.
+* You downloaded the `openshift-install` program. The version of the `openshift-install` program must match the {product-title} version in your seed image.
 * The target host has network access to the seed image URL and all other installation artifacts.
 * If you require static networking, you must install the `nmstatectl` library on the host that creates the live installation ISO.
 
@@ -104,20 +104,20 @@ networkConfig:
           dhcp: false
           auto-dns: false
           address:
-            - ip: 10.6.85.8
+            - ip: 192.168.200.25
               prefix-length: 24
         ipv6:
           enabled: false
     dns-resolver:
       config:
         server:
-          - 10.6.73.2
-          - 10.6.73.4
+          - 192.168.15.47
+          - 192.168.15.48
     routes:
       config:
       - destination: 0.0.0.0/0
         metric: 150
-        next-hop-address: 10.6.85.254
+        next-hop-address: 192.168.200.254
         next-hop-interface: ens1f0
 
 ----

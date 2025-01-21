@@ -263,12 +263,12 @@ Topics:
   File: rosa-hcp-creating-cluster-with-aws-kms-key
 - Name: Creating a private cluster on ROSA with HCP
   File: rosa-hcp-aws-private-creating-cluster
+- Name: Creating a ROSA with HCP cluster with egress lockdown
+  File: rosa-hcp-egress-lockdown-install
 - Name: Creating ROSA with HCP clusters with external authentication
   File: rosa-hcp-sts-creating-a-cluster-ext-auth
 - Name: Creating ROSA with HCP clusters without a CNI plugin
   File: rosa-hcp-cluster-no-cni
-- Name: Using the Node Tuning Operator on ROSA with HCP
-  File: rosa-tuning-config
 - Name: Deleting a ROSA with HCP cluster
   File: rosa-hcp-deleting-cluster
 ---
@@ -732,13 +732,15 @@ Dir: cicd
 Distros: openshift-rosa
 Topics:
 - Name: CI/CD overview
-  File: index
-# This can be included when Shipwright is ported.
-# - Name: Builds using Shipwright
-#   Dir: builds_using_shipwright
-#   Topics:
-#   - Name: Overview of Builds
-#     File: overview-openshift-builds
+  Dir: overview
+  Topics:
+  - Name: About CI/CD
+    File: index
+- Name: Builds using Shipwright
+  Dir: builds_using_shipwright
+  Topics:
+  - Name: Overview of Builds
+    File: overview-openshift-builds
 - Name: Builds using BuildConfig
   Dir: builds
   Topics:
@@ -772,18 +774,16 @@ Topics:
     File: troubleshooting-builds
 #  - Name: Setting up additional trusted certificate authorities for builds
 #    File: setting-up-trusted-ca
-# This can be included when Pipelines is ported.
-# - Name: Pipelines
-#   Dir: pipelines
-#   Topics:
-#   - Name: About OpenShift Pipelines
-#     File: about-pipelines
-# This can be included when GitOps is ported.
-# - Name: GitOps
-#   Dir: gitops
-#   Topics:
-#   - Name: About OpenShift GitOps
-#     File: about-redhat-openshift-gitops
+- Name: Pipelines
+  Dir: pipelines
+  Topics:
+  - Name: About OpenShift Pipelines
+    File: about-pipelines
+- Name: GitOps
+  Dir: gitops
+  Topics:
+  - Name: About OpenShift GitOps
+    File: about-redhat-openshift-gitops
 - Name: Jenkins
   Dir: jenkins
   Topics:
@@ -791,9 +791,8 @@ Topics:
     File: images-other-jenkins
   - Name: Jenkins agent
     File: images-other-jenkins-agent
-# Include this when Pipelines is ported:
-#  - Name: Migrating from Jenkins to OpenShift Pipelines
-#    File: migrating-from-jenkins-to-openshift-pipelines
+  - Name: Migrating from Jenkins to OpenShift Pipelines
+    File: migrating-from-jenkins-to-openshift-pipelines
   - Name: Important changes to OpenShift Jenkins images
     File: important-changes-to-openshift-jenkins-images
 ---
@@ -1081,12 +1080,18 @@ Distros: openshift-rosa
 Topics:
 - Name: About networking
   File: about-managed-networking
-- Name: Understanding the DNS Operator
-  File: dns-operator
-- Name: Understanding the Ingress Operator
-  File: ingress-operator
-- Name: AWS Load Balancer Operator
-  File: aws-load-balancer-operator
+- Name: Networking Operators
+  Dir: networking_operators
+  Distros: openshift-rosa
+  Topics:
+  - Name: AWS Load Balancer Operator
+    File: aws-load-balancer-operator
+  - Name: DNS Operator in Red Hat OpenShift Service on AWS
+    File: dns-operator
+  - Name: Ingress Operator in Red Hat OpenShift Service on AWS
+    File: ingress-operator
+  - Name: Ingress Node Firewall Operator in Red Hat OpenShift Service on AWS
+    File: ingress-node-firewall-operator
 - Name: Network verification
   File: network-verification
 - Name: Configuring a cluster-wide proxy during installation
@@ -1125,8 +1130,6 @@ Topics:
       File: default-network-policy
     - Name: Configuring multitenant isolation with network policy
       File: multitenant-network-policy
-  - Name: Understanding the Ingress Node Firewall Operator
-    File: ingress-node-firewall-operator
 - Name: OVN-Kubernetes network plugin
   Dir: ovn_kubernetes_network_provider
   Topics:
@@ -1239,12 +1242,100 @@ Topics:
 # - Name: Using the internal registry
 #   File: rosa-using-internal-registry
 ---
-Name: Backing up and restoring applications
-Dir: rosa_backing_up_and_restoring_applications
+Name: Backup and restore
+Dir: backup_and_restore
 Distros: openshift-rosa
 Topics:
-- Name: Backing up applications
-  File: backing-up-applications
+- Name: OADP Application backup and restore
+  Dir: application_backup_and_restore
+  Topics:
+  - Name: Introduction to OpenShift API for Data Protection
+    File: oadp-intro
+  - Name: OADP release notes
+    Dir: release-notes
+    Topics:
+    - Name: OADP 1.4 release notes
+      File: oadp-1-4-release-notes
+  - Name: OADP performance
+    Dir: oadp-performance
+    Topics:
+    - Name: OADP recommended network settings
+      File: oadp-recommended-network-settings
+  - Name: OADP features and plugins
+    File: oadp-features-plugins
+  - Name: OADP use cases
+    Dir: oadp-use-cases
+    Topics:
+    - Name: Backing up an application using OADP with ROSA STS
+      File: oadp-rosa-backup-restore
+# ODF not supported on ROSA Classic
+#    - Name: Backing up an application using OADP and ODF
+#      File: oadp-usecase-backup-using-odf
+    - Name: Restoring a backup to a different namespace
+      File: oadp-usecase-restore-different-namespace
+# ODF not supported on ROSA Classic
+#    - Name: Including a self-signed CA certificate during backup
+#      File: oadp-usecase-enable-ca-cert
+  - Name: Installing and configuring OADP
+    Dir: oadp-rosa
+    Topics:
+    - Name: Installing OADP
+      File: oadp-rosa-backing-up-applications
+  - Name: Uninstalling OADP
+    Dir: installing
+    Topics:
+    - Name: Uninstalling OADP
+      File: uninstalling-oadp
+  - Name: OADP backing up
+    Dir: backing_up_and_restoring
+    Topics:
+    - Name: Backing up applications
+      File: backing-up-applications
+    - Name: Creating a Backup CR
+      File: oadp-creating-backup-cr
+# ROSA docs do not include CSI snapshots
+#    - Name: Backing up persistent volumes with CSI snapshots
+#      File: oadp-backing-up-pvs-csi-doc
+#    - Name: Backing up applications with File System Backup
+#      File: oadp-backing-up-applications-restic-doc
+    - Name: Creating backup hooks
+      File: oadp-creating-backup-hooks-doc
+    - Name: Scheduling backups using Schedule CR
+      File: oadp-scheduling-backups-doc
+    - Name: Deleting backups
+      File: oadp-deleting-backups
+#    - Name: About Kopia
+#      File: oadp-about-kopia
+  - Name: OADP restoring
+    Dir: backing_up_and_restoring
+    Topics:
+    - Name: Restoring applications
+      File: restoring-applications
+#  - Name: OADP and ROSA
+#    Dir: oadp-rosa
+#    Topics:
+#    - Name: Backing up applications on ROSA STS using OADP
+#      File: oadp-rosa-backing-up-applications
+#  - Name: OADP and AWS STS
+#    Dir: aws-sts
+#    Topics:
+#    - Name: Backing up applications on AWS STS using OADP
+#      File: oadp-aws-sts
+#  - Name: OADP Data Mover
+#    Dir: installing
+#    Topics:
+#    - Name: About the OADP Data Mover
+#      File: about-oadp-data-mover
+#    - Name: Backing up and restoring volumes by using CSI snapshots data movement
+#      File: oadp-backup-restore-csi-snapshots
+#    - Name: Overriding Kopia algorithms
+#      File: overriding-kopia-algorithms
+#  - Name: Troubleshooting
+#    File: troubleshooting
+#  - Name: OADP API
+#    File: oadp-api
+#  - Name: Advanced OADP features and functionalities
+#    File: oadp-advanced-topics
 ---
 Name: Nodes
 Dir: nodes
@@ -1305,7 +1396,6 @@ Topics:
       File: nodes-cma-autoscaling-custom-rn-past
   - Name: Custom Metrics Autoscaler Operator overview
     File: nodes-cma-autoscaling-custom
-
   - Name: Installing the custom metrics autoscaler
     File: nodes-cma-autoscaling-custom-install
   - Name: Understanding the custom metrics autoscaler triggers
@@ -1365,10 +1455,10 @@ Topics:
 #     File: nodes-secondary-scheduler-configuring
 #   - Name: Uninstalling the Secondary Scheduler Operator
 #     File: nodes-secondary-scheduler-uninstalling
-- Name: Using Jobs and DaemonSets
+- Name: Using jobs and daemon sets
   Dir: jobs
   Topics:
-  - Name: Running background tasks on nodes automatically with daemonsets
+  - Name: Running background tasks on nodes automatically with daemon sets
     File: nodes-pods-daemonsets
     Distros: openshift-rosa
   - Name: Running tasks in pods using jobs
@@ -1490,7 +1580,10 @@ Dir: observability
 Distros: openshift-rosa
 Topics:
 - Name: Observability overview
-  File: index
+  Dir: overview
+  Topics:
+  - Name: About Observability
+    File: index
 - Name: Monitoring
   Dir: monitoring
   Distros: openshift-rosa
@@ -1786,43 +1879,55 @@ Topics:
     File: virt-post-install-network-config
   - Name: Storage configuration
     File: virt-post-install-storage-config
+  - Name: Configuring certificate rotation
+    File: virt-configuring-certificate-rotation
 - Name: Updating
   Dir: updating
   Topics:
   - Name: Updating OpenShift Virtualization
     File: upgrading-virt
     Distros: openshift-rosa
-- Name: Virtual machines
-  Dir: virtual_machines
+- Name: Creating a virtual machine
+  Dir: creating_vm
   Topics:
-  - Name: Creating VMs from Red Hat images
-    Dir: creating_vms_rh
+#  - Name: Overview
+#    File: virt-basic-vm-overview
+#  - Name: Setting up your environment
+#    File: virt-setting-up-environment
+  - Name: Creating VMs from instance types
+    File: virt-creating-vms-from-instance-types
+  - Name: Creating VMs from templates
+    File: virt-creating-vms-from-templates
+- Name: Advanced VM creation
+  Dir: creating_vms_advanced
+  Topics:
+#  - Name: Overview
+#    File: virt-advanced-vm-overview
+  - Name: Creating VMs in the web console
+    Dir: creating_vms_advanced_web
     Topics:
-    - Name: Creating VMs from Red Hat images overview
+    - Name: Creating VMs from Red Hat images
       File: virt-creating-vms-from-rh-images-overview
-    - Name: Creating VMs from templates
-      File: virt-creating-vms-from-templates
-    - Name: Creating VMs from instance types
-      File: virt-creating-vms-from-instance-types
-    - Name: Creating VMs from the CLI
-      File: virt-creating-vms-from-cli
-  - Name: Creating VMs from custom images
-    Dir: creating_vms_custom
-    Topics:
-    - Name: Creating VMs from custom images overview
-      File: virt-creating-vms-from-custom-images-overview
-    - Name: Creating VMs by using container disks
-      File: virt-creating-vms-from-container-disks
     - Name: Creating VMs by importing images from web pages
       File: virt-creating-vms-from-web-images
     - Name: Creating VMs by uploading images
       File: virt-creating-vms-uploading-images
     - Name: Cloning VMs
       File: virt-cloning-vms
+  - Name: Creating VMs using the CLI
+    Dir: creating_vms_cli
+    Topics:
+    - Name: Creating virtual machines from the command line
+      File: virt-creating-vms-from-cli
+    - Name: Creating VMs by using container disks
+      File: virt-creating-vms-from-container-disks
     - Name: Creating VMs by cloning PVCs
       File: virt-creating-vms-by-cloning-pvcs
-    - Name: Installing the QEMU guest agent and VirtIO drivers
-      File: virt-installing-qemu-guest-agent
+- Name: Managing VMs
+  Dir: managing_vms
+  Topics:
+  - Name: Installing the QEMU guest agent and VirtIO drivers
+    File: virt-installing-qemu-guest-agent
   - Name: Connecting to VM consoles
     File: virt-accessing-vm-consoles
   - Name: Configuring SSH access to VMs
@@ -1846,40 +1951,42 @@ Topics:
   - Name: Advanced virtual machine management
     Dir: advanced_vm_management
     Topics:
-#Advanced virtual machine configuration
     - Name: Working with resource quotas for virtual machines
       File: virt-working-with-resource-quotas-for-vms
     - Name: Specifying nodes for virtual machines
       File: virt-specifying-nodes-for-vms
-    - Name: Configuring certificate rotation
-      File: virt-configuring-certificate-rotation
     - Name: Configuring the default CPU model
       File: virt-configuring-default-cpu-model
     - Name: UEFI mode for virtual machines
       File: virt-uefi-mode-for-vms
     - Name: Configuring PXE booting for virtual machines
       File: virt-configuring-pxe-booting
-# Huge pages  not supported in ROSA
-#    - Name: Using huge pages with virtual machines
-#      File: virt-using-huge-pages-with-vms
+# Huge pages not supported in ROSA
+#   - Name: Using huge pages with virtual machines
+#     File: virt-using-huge-pages-with-vms
 # CPU Manager not supported in ROSA
-#    - Name: Enabling dedicated resources for a virtual machine
-#      File: virt-dedicated-resources-vm
+#   - Name: Enabling dedicated resources for a virtual machine
+#     File: virt-dedicated-resources-vm
     - Name: Scheduling virtual machines
       File: virt-schedule-vms
 # Cannot create required machine config in ROSA as required
-#    - Name: Configuring PCI passthrough
-#      File: virt-configuring-pci-passthrough
+#   - Name: Configuring PCI passthrough
+#     File: virt-configuring-pci-passthrough
 # Cannot create required machine config in ROSA as required
-#    - Name: Configuring virtual GPUs
-#      File: virt-configuring-virtual-gpus
+#   - Name: Configuring virtual GPUs
+#     File: virt-configuring-virtual-gpus
 # Feature is TP, thus not supported in ROSA
-#    - Name: Enabling descheduler evictions on virtual machines
-#      File: virt-enabling-descheduler-evictions
+#   - Name: Enabling descheduler evictions on virtual machines
+#     File: virt-enabling-descheduler-evictions
     - Name: About high availability for virtual machines
       File: virt-high-availability-for-vms
     - Name: Control plane tuning
       File: virt-vm-control-plane-tuning
+# Need to review following are supported:
+#   - Name: Assigning compute resources
+#     File: virt-assigning-compute-resources
+#   - Name: About multi-queue functionality
+#     File: virt-about-multi-queue
   - Name: VM disks
     Dir: virtual_disks
     Topics:
@@ -1887,6 +1994,9 @@ Topics:
       File: virt-hot-plugging-virtual-disks
     - Name: Expanding VM disks
       File: virt-expanding-vm-disks
+# Need to check if supported:
+#   - Name: Configuring shared volumes
+#     File: virt-configuring-shared-volumes-for-vms
 - Name: Networking
   Dir: vm_networking
   Topics:
@@ -1905,8 +2015,8 @@ Topics:
 #    File: virt-using-dpdk-with-sriov
   - Name: Connecting a VM to an OVN-Kubernetes secondary network
     File: virt-connecting-vm-to-ovn-secondary-network
-#  - Name: Hot plugging secondary network interfaces
-#    File: virt-hot-plugging-network-interfaces
+  - Name: Hot plugging secondary network interfaces
+    File: virt-hot-plugging-network-interfaces
   - Name: Connecting a VM to a service mesh
     File: virt-connecting-vm-to-service-mesh
   - Name: Configuring a dedicated network for live migration

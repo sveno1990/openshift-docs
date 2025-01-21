@@ -20,7 +20,13 @@
 #
 # The ordering of the records in this document determines the ordering of the
 # topic groups and topics on the main page.
-
+---
+Name: What's new
+Dir: rosa_release_notes
+Distros: openshift-rosa-hcp
+Topics:
+- Name: What's new with Red Hat OpenShift Service on AWS
+  File: rosa-release-notes
 ---
 Name: Introduction to ROSA
 Dir: rosa_architecture
@@ -64,30 +70,46 @@ Topics:
   Distros: openshift-rosa-hcp
   Topics:
   - Name: Deploying a cluster
-    File: cloud-experts-getting-started-hcp-for-hcp
+    File: learning-getting-started-hcp-for-hcp
   - Name: Creating an admin user
-    File: cloud-experts-getting-started-admin
+    File: learning-getting-started-admin
   - Name: Setting up an identity provider
-    File: cloud-experts-getting-started-idp
+    File: learning-getting-started-idp
   - Name: Granting admin rights
-    File: cloud-experts-getting-started-admin-rights
+    File: learning-getting-started-admin-rights
   - Name: Accessing your cluster
-    File: cloud-experts-getting-started-accessing
+    File: learning-getting-started-accessing
   - Name: Managing worker nodes
-    File: cloud-experts-getting-started-managing-worker-nodes
+    File: learning-getting-started-managing-worker-nodes
   - Name: Autoscaling
-    File: cloud-experts-getting-started-autoscaling
+    File: learning-getting-started-autoscaling
   - Name: Upgrading your cluster
-    File: cloud-experts-getting-started-upgrading
+    File: learning-getting-started-upgrading
   - Name: Deleting your cluster
-    File: cloud-experts-getting-started-deleting
+    File: learning-getting-started-deleting
   - Name: Obtaining support
-    File: cloud-experts-getting-started-support
+    File: learning-getting-started-support
 - Name: Deploying an application workshop
   Dir: deploying_application_workshop
   Topics:
   - Name: Workshop overview
     File: learning-lab-overview
+  - Name: Deployment
+    File: learning-deploying-application-deployment
+  - Name: Health Check
+    File: learning-deploying-application-health-check
+  - Name: Storage
+    File: learning-deploying-application-storage
+  - Name: ConfigMap, secrets, and environment variables
+    File: learning-deploying-configmaps-secrets-env-var
+  - Name: Networking
+    File: learning-deploying-application-networking
+  - Name: Scaling an application
+    File: learning-deploying-application-scaling
+  - Name: S2i deployments
+    File: learning-deploying-application-s2i-deployments
+  - Name: Using Source-to-Image (S2I) webhooks for automated deployment
+    File: learning-deploying-s2i-webhook-cicd
 # ---
 # Name: Architecture
 # Dir: architecture
@@ -187,10 +209,21 @@ Topics:
   File: rosa-hcp-creating-cluster-with-aws-kms-key
 - Name: Creating a private cluster on ROSA with HCP
   File: rosa-hcp-aws-private-creating-cluster
+- Name: Creating a ROSA with HCP cluster with egress lockdown
+  File: rosa-hcp-egress-lockdown-install
 - Name: Creating ROSA with HCP clusters with external authentication
   File: rosa-hcp-sts-creating-a-cluster-ext-auth
-- Name: Using the Node Tuning Operator on ROSA with HCP
-  File: rosa-tuning-config
+---
+Name: Red Hat OpenShift Cluster Manager
+Dir: ocm
+Distros: openshift-rosa-hcp
+Topics:
+- Name: Red Hat OpenShift Cluster Manager
+  File: ocm-overview
+#  - Name: Red Hat OpenShift Cluster Manager
+#    File: ocm-overview
+#  - Name: Using the OpenShift web console
+#    File: rosa-using-openshift-console
 ---
 Name: Cluster administration
 Dir: rosa_cluster_admin
@@ -209,8 +242,6 @@ Topics:
     File: dedicated-aws-vpn
   - Name: Configuring AWS Direct Connect
     File: dedicated-aws-dc
-# - Name: Cluster autoscaling  # Cluster autoscaling not supported on HCP
-#   File: rosa-cluster-autoscaling
 - Name: Manage nodes using machine pools
   Dir: rosa_nodes
   Topics:
@@ -227,6 +258,8 @@ Topics:
     File: nodes-cluster-resource-configure
 - Name: Configuring PID limits
   File: rosa-configuring-pid-limits
+- Name: Managing multi-architecture clusters
+  File: rosa-multi-arch-cluster-managing
 ---
 Name: Security and compliance
 Dir: security
@@ -326,6 +359,75 @@ Topics:
 - Name: Upgrading ROSA with HCP
   File: rosa-hcp-upgrading
 ---
+Name: CI/CD
+Dir: cicd
+Distros: openshift-rosa-hcp
+Topics:
+- Name: CI/CD overview
+  Dir: overview
+  Topics:
+  - Name: About CI/CD
+    File: index
+- Name: Builds using Shipwright
+  Dir: builds_using_shipwright
+  Topics:
+  - Name: Overview of Builds
+    File: overview-openshift-builds
+- Name: Builds using BuildConfig
+  Dir: builds
+  Topics:
+  - Name: Understanding image builds
+    File: understanding-image-builds
+  - Name: Understanding build configurations
+    File: understanding-buildconfigs
+  - Name: Creating build inputs
+    File: creating-build-inputs
+  - Name: Managing build output
+    File: managing-build-output
+  - Name: Using build strategies
+    File: build-strategies
+#  - Name: Custom image builds with Buildah
+#    File: custom-builds-buildah
+  - Name: Performing and configuring basic builds
+    File: basic-build-operations
+  - Name: Triggering and modifying builds
+    File: triggering-builds-build-hooks
+  - Name: Performing advanced builds
+    File: advanced-build-operations
+  - Name: Using Red Hat subscriptions in builds
+    File: running-entitled-builds
+  # Dedicated-admin cannot secure builds by strategy
+  # - Name: Securing builds by strategy
+  #   File: securing-builds-by-strategy
+  # Dedicated-admin cannot edit build configuration resources
+  # - Name: Build configuration resources
+  #   File: build-configuration
+  - Name: Troubleshooting builds
+    File: troubleshooting-builds
+#  - Name: Setting up additional trusted certificate authorities for builds
+#    File: setting-up-trusted-ca
+- Name: Pipelines
+  Dir: pipelines
+  Topics:
+  - Name: About OpenShift Pipelines
+    File: about-pipelines
+- Name: GitOps
+  Dir: gitops
+  Topics:
+  - Name: About OpenShift GitOps
+    File: about-redhat-openshift-gitops
+- Name: Jenkins
+  Dir: jenkins
+  Topics:
+  - Name: Configuring Jenkins images
+    File: images-other-jenkins
+  - Name: Jenkins agent
+    File: images-other-jenkins-agent
+  - Name: Migrating from Jenkins to OpenShift Pipelines
+    File: migrating-from-jenkins-to-openshift-pipelines
+  - Name: Important changes to OpenShift Jenkins images
+    File: important-changes-to-openshift-jenkins-images
+---
 Name: Storage
 Dir: storage
 Distros: openshift-rosa-hcp
@@ -356,13 +458,6 @@ Topics:
   File: generic-ephemeral-vols
 - Name: Dynamic provisioning
   File: dynamic-provisioning
-# ---
-# Name: Backing up and restoring applications
-# Dir: rosa_backing_up_and_restoring_applications
-# Distros: openshift-rosa-hcp
-# Topics:
-# - Name: Backing up applications
-#   File: backing-up-applications
 ---
 Name: Registry
 Dir: registry
@@ -375,9 +470,436 @@ Topics:
 - Name: Accessing the registry
   File: accessing-the-registry
 ---
+Name: Backup and restore
+Dir: backup_and_restore
+Distros: openshift-rosa-hcp
+Topics:
+- Name: OADP Application backup and restore
+  Dir: application_backup_and_restore
+  Topics:
+  - Name: Introduction to OpenShift API for Data Protection
+    File: oadp-intro
+  - Name: OADP release notes
+    Dir: release-notes
+    Topics:
+    - Name: OADP 1.4 release notes
+      File: oadp-1-4-release-notes
+  - Name: OADP performance
+    Dir: oadp-performance
+    Topics:
+    - Name: OADP recommended network settings
+      File: oadp-recommended-network-settings
+  - Name: OADP features and plugins
+    File: oadp-features-plugins
+  - Name: OADP use cases
+    Dir: oadp-use-cases
+    Topics:
+    - Name: Backing up an application using OADP with ROSA STS
+      File: oadp-rosa-backup-restore
+    - Name: Backing up an application using OADP and ODF
+      File: oadp-usecase-backup-using-odf
+    - Name: Restoring a backup to a different namespace
+      File: oadp-usecase-restore-different-namespace
+    - Name: Including a self-signed CA certificate during backup
+      File: oadp-usecase-enable-ca-cert
+  - Name: Installing and configuring OADP
+    Dir: oadp-rosa
+    Topics:
+    - Name: Installing OADP
+      File: oadp-rosa-backing-up-applications
+# TODO: Include this when the Operators book is added to ROSA HCP
+#  - Name: Uninstalling OADP
+#    Dir: installing
+#    Topics:
+#    - Name: Uninstalling OADP
+#      File: uninstalling-oadp
+  - Name: OADP backing up
+    Dir: backing_up_and_restoring
+    Topics:
+    - Name: Backing up applications
+      File: backing-up-applications
+    - Name: Creating a Backup CR
+      File: oadp-creating-backup-cr
+# ROSA docs do not include CSI snapshots
+#    - Name: Backing up persistent volumes with CSI snapshots
+#      File: oadp-backing-up-pvs-csi-doc
+#    - Name: Backing up applications with File System Backup
+#      File: oadp-backing-up-applications-restic-doc
+    - Name: Creating backup hooks
+      File: oadp-creating-backup-hooks-doc
+    - Name: Scheduling backups using Schedule CR
+      File: oadp-scheduling-backups-doc
+    - Name: Deleting backups
+      File: oadp-deleting-backups
+#    - Name: About Kopia
+#      File: oadp-about-kopia
+  - Name: OADP restoring
+    Dir: backing_up_and_restoring
+    Topics:
+    - Name: Restoring applications
+      File: restoring-applications
+#  - Name: OADP and ROSA
+#    Dir: oadp-rosa
+#    Topics:
+#    - Name: Backing up applications on ROSA STS using OADP
+#      File: oadp-rosa-backing-up-applications
+#  - Name: OADP and AWS STS
+#    Dir: aws-sts
+#    Topics:
+#    - Name: Backing up applications on AWS STS using OADP
+#      File: oadp-aws-sts
+#  - Name: OADP Data Mover
+#    Dir: installing
+#    Topics:
+#    - Name: About the OADP Data Mover
+#      File: about-oadp-data-mover
+#    - Name: Backing up and restoring volumes by using CSI snapshots data movement
+#      File: oadp-backup-restore-csi-snapshots
+#    - Name: Overriding Kopia algorithms
+#      File: overriding-kopia-algorithms
+#  - Name: Troubleshooting
+#    File: troubleshooting
+#  - Name: OADP API
+#    File: oadp-api
+#  - Name: Advanced OADP features and functionalities
+#    File: oadp-advanced-topics
+---
 Name: Nodes
 Dir: nodes
 Distros: openshift-rosa-hcp
 Topics:
 - Name: Overview of nodes
   File: index
+- Name: Working with pods
+  Dir: pods
+  Topics:
+  - Name: About pods
+    File: nodes-pods-using
+  - Name: Viewing pods
+    File: nodes-pods-viewing
+  - Name: Configuring a cluster for pods
+    File: nodes-pods-configuring
+# Cannot create namespace to install VPA; revisit after Operator book converted
+# - Name: Automatically adjust pod resource levels with the vertical pod autoscaler
+#   File: nodes-pods-vertical-autoscaler
+  - Name: Providing sensitive data to pods
+    File: nodes-pods-secrets
+  - Name: Creating and using config maps
+    File: nodes-pods-configmaps
+# Cannot create required kubeletconfigs
+# - Name: Using Device Manager to make devices available to nodes
+#   File: nodes-pods-plugins
+  - Name: Including pod priority in pod scheduling decisions
+    File: nodes-pods-priority
+  - Name: Placing pods on specific nodes using node selectors
+    File: nodes-pods-node-selectors
+# Cannot create namespace to install Run Once; revisit after Operator book converted
+# - Name: Run Once Duration Override Operator
+#   Dir: run_once_duration_override
+#   Topics:
+#   - Name: Run Once Duration Override Operator overview
+#     File: index
+#   - Name: Run Once Duration Override Operator release notes
+#     File: run-once-duration-override-release-notes
+#   - Name: Overriding the active deadline for run-once pods
+#     File: run-once-duration-override-install
+#   - Name: Uninstalling the Run Once Duration Override Operator
+#     File: run-once-duration-override-uninstall
+- Name: Automatically scaling pods with the Custom Metrics Autoscaler Operator
+  Dir: cma
+  Topics:
+  - Name: Release notes
+    Dir: nodes-cma-rn
+    Topics:
+    - Name: Custom Metrics Autoscaler Operator release notes
+      File: nodes-cma-autoscaling-custom-rn
+    - Name: Past releases
+      File: nodes-cma-autoscaling-custom-rn-past
+  - Name: Custom Metrics Autoscaler Operator overview
+    File: nodes-cma-autoscaling-custom
+  - Name: Installing the custom metrics autoscaler
+    File: nodes-cma-autoscaling-custom-install
+  - Name: Understanding the custom metrics autoscaler triggers
+    File: nodes-cma-autoscaling-custom-trigger
+  - Name: Understanding the custom metrics autoscaler trigger authentications
+    File: nodes-cma-autoscaling-custom-trigger-auth
+  - Name: Pausing the custom metrics autoscaler
+    File: nodes-cma-autoscaling-custom-pausing
+  - Name: Gathering audit logs
+    File: nodes-cma-autoscaling-custom-audit-log
+  - Name: Gathering debugging data
+    File: nodes-cma-autoscaling-custom-debugging
+  - Name: Viewing Operator metrics
+    File: nodes-cma-autoscaling-custom-metrics
+  - Name: Understanding how to add custom metrics autoscalers
+    File: nodes-cma-autoscaling-custom-adding
+  - Name: Removing the Custom Metrics Autoscaler Operator
+    File: nodes-cma-autoscaling-custom-removing
+- Name: Controlling pod placement onto nodes (scheduling)
+  Dir: scheduling
+  Topics:
+  - Name: About pod placement using the scheduler
+    File: nodes-scheduler-about
+  - Name: Placing pods relative to other pods using pod affinity and anti-affinity rules
+    File: nodes-scheduler-pod-affinity
+  - Name: Controlling pod placement on nodes using node affinity rules
+    File: nodes-scheduler-node-affinity
+  - Name: Placing pods onto overcommited nodes
+    File: nodes-scheduler-overcommit
+# Per OSDOCS-9791, ROSA customers cannot add taints to individual nodes.
+#  - Name: Controlling pod placement using node taints
+#    File: nodes-scheduler-taints-tolerations
+  - Name: Placing pods on specific nodes using node selectors
+    File: nodes-scheduler-node-selectors
+  - Name: Controlling pod placement using pod topology spread constraints
+    File: nodes-scheduler-pod-topology-spread-constraints
+# - Name: Placing a pod on a specific node by name
+#   File: nodes-scheduler-node-names
+# - Name: Placing a pod in a specific project
+#   File: nodes-scheduler-node-projects
+# - Name: Keeping your cluster balanced using the descheduler
+#   File: nodes-scheduler-descheduler
+# Cannot create namespace to install Desceduler Operator; revisit after Operator book converted
+#  - Name: Evicting pods using the descheduler
+#   File: nodes-descheduler
+# Cannot create namespace to install Secondary Scheduler Operator; revisit after Operator book converted
+# - Name: Secondary scheduler
+#   Dir: secondary_scheduler
+#   Distros: openshift-enterprise
+#   Topics:
+#   - Name: Secondary scheduler overview
+#     File: index
+#   - Name: Secondary Scheduler Operator release notes
+#     File: nodes-secondary-scheduler-release-notes
+#   - Name: Scheduling pods using a secondary scheduler
+#     File: nodes-secondary-scheduler-configuring
+#   - Name: Uninstalling the Secondary Scheduler Operator
+#     File: nodes-secondary-scheduler-uninstalling
+# - Name: Using Jobs and DaemonSets
+#   Dir: jobs
+#   Topics:
+#   - Name: Running background tasks on nodes automatically with daemonsets
+#     File: nodes-pods-daemonsets
+#     Distros: openshift-rosa-hcp
+#   - Name: Running tasks in pods using jobs
+#     File: nodes-nodes-jobs
+# - Name: Working with nodes
+#   Dir: nodes
+#   Distros: openshift-rosa-hcp
+#   Topics:
+#   - Name: Viewing and listing the nodes in your cluster
+#     File: nodes-nodes-viewing
+#  cannot use oc adm cordon; cannot patch resource "machinesets"; cannot patch resource "nodes"
+#   - Name: Working with nodes
+#     File: nodes-nodes-working
+#  cannot create resource "kubeletconfigs", "schedulers", "machineconfigs", "kubeletconfigs"
+#   - Name: Managing nodes
+#     File: nodes-nodes-managing
+#  cannot create resource "kubeletconfigs"
+#   - Name: Managing graceful node shutdown
+#     File: nodes-nodes-graceful-shutdown
+#  cannot create resource "kubeletconfigs"
+#   - Name: Managing the maximum number of pods per node
+#     File: nodes-nodes-managing-max-pods
+#   - Name: Using the Node Tuning Operator
+#     File: nodes-node-tuning-operator
+#   - Name: Remediating, fencing, and maintaining nodes
+#     File: nodes-remediating-fencing-maintaining-rhwa
+#  Cannot create namespace needed to oc debug and reboot; revisit after Operator book converted
+#   - Name: Understanding node rebooting
+#     File: nodes-nodes-rebooting
+#  cannot create resource "kubeletconfigs"
+#   - Name: Freeing node resources using garbage collection
+#     File: nodes-nodes-garbage-collection
+#  cannot create resource "kubeletconfigs"
+#   - Name: Allocating resources for nodes
+#     File: nodes-nodes-resources-configuring
+#  cannot create resource "kubeletconfigs"
+#   - Name: Allocating specific CPUs for nodes in a cluster
+#     File: nodes-nodes-resources-cpus
+#  cannot create resource "kubeletconfigs"
+#   - Name: Configuring the TLS security profile for the kubelet
+#     File: nodes-nodes-tls
+#     Distros: openshift-rosa-hcp
+#   - Name: Monitoring for problems in your nodes
+#     File: nodes-nodes-problem-detector
+#   - Name: Machine Config Daemon metrics
+#     File: nodes-nodes-machine-config-daemon-metrics
+#  cannot patch resource "nodes"
+#   - Name: Creating infrastructure nodes
+#     File: nodes-nodes-creating-infrastructure-nodes
+# - Name: Working with containers
+#   Dir: containers
+#   Topics:
+#   - Name: Understanding containers
+#     File: nodes-containers-using
+#   - Name: Using Init Containers to perform tasks before a pod is deployed
+#     File: nodes-containers-init
+#     Distros: openshift-rosa-hcp
+#   - Name: Using volumes to persist container data
+#     File: nodes-containers-volumes
+#   - Name: Mapping volumes using projected volumes
+#     File: nodes-containers-projected-volumes
+#   - Name: Allowing containers to consume API objects
+#     File: nodes-containers-downward-api
+#   - Name: Copying files to or from a container
+#     File: nodes-containers-copying-files
+#   - Name: Executing remote commands in a container
+#     File: nodes-containers-remote-commands
+#   - Name: Using port forwarding to access applications in a container
+#     File: nodes-containers-port-forwarding
+#  cannot patch resource "configmaps"
+#   - Name: Using sysctls in containers
+#     File: nodes-containers-sysctls
+# - Name: Working with clusters
+#   Dir: clusters
+#   Topics:
+#   - Name: Viewing system event information in a cluster
+#     File: nodes-containers-events
+#   - Name: Analyzing cluster resource levels
+#     File: nodes-cluster-resource-levels
+#     Distros: openshift-rosa-hcp
+#   - Name: Setting limit ranges
+#     File: nodes-cluster-limit-ranges
+#   - Name: Configuring cluster memory to meet container memory and risk requirements
+#     File: nodes-cluster-resource-configure
+#     Distros: openshift-rosa-hcp
+#   - Name: Configuring your cluster to place pods on overcommited nodes
+#     File: nodes-cluster-overcommit
+#     Distros: openshift-rosa-hcp
+#   - Name: Configuring the Linux cgroup version on your nodes
+#     File: nodes-cluster-cgroups-2
+#     Distros: openshift-enterprise
+#   - Name: Configuring the Linux cgroup version on your nodes
+#     File: nodes-cluster-cgroups-okd
+#     Distros: openshift-origin
+#   The TechPreviewNoUpgrade Feature Gate is not allowed
+#   - Name: Enabling features using FeatureGates
+#     File: nodes-cluster-enabling-features
+#     Distros: openshift-rosa-hcp
+#  Error: nodes.config.openshift.io "cluster" could not be patched
+#   - Name: Improving cluster stability in high latency environments using worker latency profiles
+#     File: nodes-cluster-worker-latency-profiles
+#  Not supported per Michael McNeill
+# - Name: Remote worker nodes on the network edge
+#   Dir: edge
+#   Topics:
+#   - Name: Using remote worker node at the network edge
+#     File: nodes-edge-remote-workers
+#  Not supported per Michael McNeill
+# - Name: Worker nodes for single-node OpenShift clusters
+#   Dir: nodes
+#   Distros: openshift-rosa-hcp
+#   Topics:
+#   - Name: Adding worker nodes to single-node OpenShift clusters
+#     File: nodes-sno-worker-nodes
+- Name: Using jobs and daemon sets
+  Dir: jobs
+  Topics:
+  - Name: Running background tasks on nodes automatically with daemon sets
+    File: nodes-pods-daemonsets
+  - Name: Running tasks in pods using jobs
+    File: nodes-nodes-jobs
+- Name: Working with nodes
+  Dir: nodes
+  Topics:
+  - Name: Viewing and listing the nodes in your cluster
+    File: nodes-nodes-viewing
+  - Name: Working with nodes
+    File: nodes-nodes-working
+# cannot use oc adm cordon; cannot patch resource "machinesets"; cannot patch resource "nodes"
+#  - Name: Working with nodes
+#    File: nodes-nodes-working
+# cannot create resource "kubeletconfigs", "schedulers", "machineconfigs", "kubeletconfigs"
+#  - Name: Managing nodes
+#    File: nodes-nodes-managing
+# cannot create resource "kubeletconfigs"
+#  - Name: Managing graceful node shutdown
+#    File: nodes-nodes-graceful-shutdown
+# cannot create resource "kubeletconfigs"
+#  - Name: Managing the maximum number of pods per node
+#    File: nodes-nodes-managing-max-pods
+  - Name: Using the Node Tuning Operator
+    File: nodes-node-tuning-operator
+#  - Name: Remediating, fencing, and maintaining nodes
+#    File: nodes-remediating-fencing-maintaining-rhwa
+# Cannot create namespace needed to oc debug and reboot; revisit after Operator book converted
+#  - Name: Understanding node rebooting
+#    File: nodes-nodes-rebooting
+# cannot create resource "kubeletconfigs"
+#  - Name: Freeing node resources using garbage collection
+#    File: nodes-nodes-garbage-collection
+# cannot create resource "kubeletconfigs"
+#  - Name: Allocating resources for nodes
+#    File: nodes-nodes-resources-configuring
+# cannot create resource "kubeletconfigs"
+#  - Name: Allocating specific CPUs for nodes in a cluster
+#    File: nodes-nodes-resources-cpus
+# cannot create resource "kubeletconfigs"
+#  - Name: Configuring the TLS security profile for the kubelet
+#    File: nodes-nodes-tls
+#    Distros: openshift-rosa
+#  - Name: Monitoring for problems in your nodes
+#    File: nodes-nodes-problem-detector
+# cannot patch resource "nodes"
+#  - Name: Creating infrastructure nodes
+#    File: nodes-nodes-creating-infrastructure-nodes
+- Name: Working with containers
+  Dir: containers
+  Topics:
+  - Name: Understanding containers
+    File: nodes-containers-using
+  - Name: Using Init Containers to perform tasks before a pod is deployed
+    File: nodes-containers-init
+  - Name: Using volumes to persist container data
+    File: nodes-containers-volumes
+  - Name: Mapping volumes using projected volumes
+    File: nodes-containers-projected-volumes
+  - Name: Allowing containers to consume API objects
+    File: nodes-containers-downward-api
+  - Name: Copying files to or from a container
+    File: nodes-containers-copying-files
+  - Name: Executing remote commands in a container
+    File: nodes-containers-remote-commands
+  - Name: Using port forwarding to access applications in a container
+    File: nodes-containers-port-forwarding
+# cannot patch resource "configmaps"
+#  - Name: Using sysctls in containers
+#    File: nodes-containers-sysctls
+- Name: Working with clusters
+  Dir: clusters
+  Topics:
+  - Name: Viewing system event information in a cluster
+    File: nodes-containers-events
+  - Name: Analyzing cluster resource levels
+    File: nodes-cluster-resource-levels
+  - Name: Setting limit ranges
+    File: nodes-cluster-limit-ranges
+  - Name: Configuring cluster memory to meet container memory and risk requirements
+    File: nodes-cluster-resource-configure
+  - Name: Configuring your cluster to place pods on overcommited nodes
+    File: nodes-cluster-overcommit
+#  - Name: Configuring the Linux cgroup version on your nodes
+#    File: nodes-cluster-cgroups-2
+#  - Name: Configuring the Linux cgroup version on your nodes
+#    File: nodes-cluster-cgroups-okd
+#  The TechPreviewNoUpgrade Feature Gate is not allowed
+#  - Name: Enabling features using FeatureGates
+#    File: nodes-cluster-enabling-features
+#    Distros: openshift-rosa
+# Error: nodes.config.openshift.io "cluster" could not be patched
+#  - Name: Improving cluster stability in high latency environments using worker latency profiles
+#    File: nodes-cluster-worker-latency-profiles
+# Not supported per Michael McNeill
+#- Name: Remote worker nodes on the network edge
+#  Dir: edge
+#  Topics:
+#  - Name: Using remote worker node at the network edge
+#    File: nodes-edge-remote-workers
+# Not supported per Michael McNeill
+#- Name: Worker nodes for single-node OpenShift clusters
+#  Dir: nodes
+#  Distros: openshift-rosa
+#  Topics:
+#  - Name: Adding worker nodes to single-node OpenShift clusters
+#    File: nodes-sno-worker-nodes

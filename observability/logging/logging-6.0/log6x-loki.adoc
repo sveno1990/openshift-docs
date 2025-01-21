@@ -1,7 +1,7 @@
 :_mod-docs-content-type: ASSEMBLY
+include::_attributes/common-attributes.adoc[leveloffset=+1]
 [id="log6x-loki"]
 = Storing logs with LokiStack
-include::_attributes/common-attributes.adoc[leveloffset=+1]
 :context: logging-6x
 
 toc::[]
@@ -21,6 +21,7 @@ include::snippets/log6x-loki-statement-snip.adoc[leveloffset=+1]
 == Core Setup and Configuration
 *Role-based access controls, basic monitoring, and pod placement to deploy Loki.*
 
+include::modules/log6x-loki-sizing.adoc[leveloffset=+1]
 include::modules/log6x-loki-rbac-rules-perms.adoc[leveloffset=+1]
 include::modules/log6x-enabling-loki-alerts.adoc[leveloffset=+1]
 include::modules/log6x-loki-memberlist-ip.adoc[leveloffset=+1]
